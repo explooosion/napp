@@ -2,3 +2,6 @@
 /node_modules
 /app-win32-ia32
 /installer
+
+# File
+yarn-error.log
