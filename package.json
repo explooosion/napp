@@ -13,7 +13,14 @@
     "type": "git",
     "url": "git+https://github.com/explooosion/napp.git"
   },
-  "keywords": [],
+  "keywords": [
+    "web",
+    "view",
+    "native"
+  ],
+  "bin": {
+    "napp": "./index.js"
+  },
   "author": "Robby <ta7382@gmail.com>",
   "license": "MIT",
   "bugs": {
@@ -21,28 +28,21 @@
   },
   "homepage": "https://github.com/explooosion/napp#readme",
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.0",
-    "babel-eslint": "^8.0.1",
-    "babel-loader": "^7.1.2",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-es2015": "^6.24.1",
+    "commander": "^2.15.1",
     "electron": "^1.7.9",
     "electron-packager": "^10.1.0",
     "electron-squirrel-startup": "^1.0.0",
     "eslint": "^4.11.0",
+    "eslint-config-google": "^0.9.1",
     "eslint-plugin-formatting": "0.0.4",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-mocha": "^4.11.0",
-    "eslint-config-google": "^0.9.1",
     "grunt": "^1.0.1",
     "grunt-electron-installer": "^2.1.0",
     "webpack": "^3.9.1"
   },
   "dependencies": {
     "copy": "^0.3.1",
-    "node-process-windows": "0.0.2",
-    "ramda": "^0.25.0"
+    "node-process-windows": "0.0.2"
   }
 }
