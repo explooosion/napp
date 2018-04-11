@@ -9,10 +9,13 @@ const ChildProcess = require('child_process')
 let win
 let frmWidth = 600
 let frmHeight = 600
+let url = 'https://www.youtube.com/'
 
 if (handleSquirrelEvent()) {
   return;
 }
+
+initialWeb()
 
 app.on('ready', createWindow)
 
@@ -29,6 +32,28 @@ app.on('activate', () => {
 })
 
 /**
+ * Initial from argv
+ */
+function initialWeb() {
+  const argv = process.argv
+  argv.forEach((arg) => {
+    arg = arg.split('=')
+    console.log(arg)
+    switch (arg[0]) {
+      case 'url':
+        url = arg[1]
+        break
+      case 'w':
+        frmWidth = Number(arg[1])
+        break
+      case 'h':
+        frmHeight = Number(arg[1])
+        break
+    }
+  });
+}
+
+/**
  * Create the browser window.
  */
 function createWindow() {
@@ -39,7 +64,7 @@ function createWindow() {
 
   win.setMenu(null)
 
-  win.loadURL('https://www.youtube.com/')
+  win.loadURL(url)
 
   // win.loadURL(url.format({
   //   pathname: path.join(__dirname, '/app/index.html'),

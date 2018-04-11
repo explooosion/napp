@@ -6,7 +6,7 @@
   "scripts": {
     "start": "electron .",
     "test": "node main.js",
-    "package": "electron-packager . napp --platform=win32 --arch=ia32 --icon=app.ico --squirrel-install --prune=true --electron-version=1.7.9 --overwrite --ignore=node_modules --ignore=.gitignore --ignore=.vscode --ignore=installer --ignore=napp-win32-ia32",
+    "build": "electron-packager . napp --platform=win32 --arch=ia32 --icon=./logo/napp.ico --squirrel-install --prune=true --electron-version=1.7.9 --overwrite --ignore=node_modules --ignore=.gitignore --ignore=.vscode --ignore=installer --ignore=napp-win32-ia32",
     "grunt": "grunt"
   },
   "repository": {

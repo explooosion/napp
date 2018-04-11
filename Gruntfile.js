@@ -1,4 +1,4 @@
-var grunt = require('grunt');
+const grunt = require('grunt');
 
 grunt.config.init({
   pkg: grunt.file.readJSON('./napp/package.json'),
@@ -11,9 +11,9 @@ grunt.config.init({
       exe: 'napp.exe',
       description: 'alarm clock',
       noMsi: true,
-      loadingGif: 'clock.ico',
-      setupIcon: 'clock.ico',
-      icon: 'clock.ico',
+      loadingGif: '/logo/napp.ico',
+      setupIcon: '/logo/napp.ico',
+      icon: '/logo/napp.ico',
     }
   }
 })
