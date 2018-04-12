@@ -1,9 +1,9 @@
-# Napp
+# natpp
 Fast, simple, minimalist tool for create Web Apps to Desktop Apps.
 
 ## Installation
 ```bash
-npm install napp -g
+npm install natpp -g
 ```
 
 ## Features
