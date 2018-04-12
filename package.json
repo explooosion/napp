@@ -1,6 +1,6 @@
 {
   "name": "natpp",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Fast, simple, minimalist tool for create Web Apps to Desktop Apps.",
   "main": "main.js",
   "scripts": {
@@ -30,21 +30,21 @@
   },
   "homepage": "https://github.com/explooosion/natpp#readme",
   "devDependencies": {
-    "commander": "^2.15.1",
-    "electron": "^1.7.9",
-    "electron-packager": "^10.1.0",
-    "electron-squirrel-startup": "^1.0.0",
     "eslint": "^4.11.0",
     "eslint-config-google": "^0.9.1",
     "eslint-plugin-formatting": "0.0.4",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-mocha": "^4.11.0",
-    "favicon": "^0.0.2",
     "webpack": "^3.9.1"
   },
   "dependencies": {
     "arch": "^2.1.0",
+    "commander": "^2.15.1",
     "copy": "^0.3.1",
+    "electron": "^1.7.9",
+    "electron-packager": "^10.1.0",
+    "electron-squirrel-startup": "^1.0.0",
+    "favicon": "^0.0.2",
     "node-process-windows": "0.0.2",
     "windows-shortcuts": "^0.1.6"
   }
