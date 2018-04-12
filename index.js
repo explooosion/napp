@@ -16,7 +16,7 @@ const os = require('os')
 
 let payload = {
   url: 'https://github.com/',
-  name: 'napp',
+  name: 'natpp',
   width: 800,
   height: 600,
   desc: 'a native web app',
@@ -37,11 +37,11 @@ if (program.args.length === 0) {
   program.outputHelp(
     () => {
       return chalk.white(`
-      Napp ${pkg.version}
+      Natpp ${pkg.version}
 
       Usage
-        $ napp <url>
-        $ napp -v
+        $ natpp <url>
+        $ natpp -v
 
       Options
         -n, --name    [value],  Set app name (default: web hostname)
@@ -50,11 +50,11 @@ if (program.args.length === 0) {
         -d, --desc    [value],  Set app description
 
       Examples
-        $ napp https://example.com/ 
-        $ napp https://example.com/ -n myapp 
-        $ napp https://example.com/ -n myapp -w 100 
-        $ napp https://example.com/ -h 200 
-        $ napp https://example.com/ -d "this is my app"  
+        $ natpp https://example.com/ 
+        $ natpp https://example.com/ -n myapp 
+        $ natpp https://example.com/ -n myapp -w 100 
+        $ natpp https://example.com/ -h 200 
+        $ natpp https://example.com/ -d "this is my app"  
     `)
     })
   return
@@ -64,12 +64,16 @@ if (program.args.length === 0) {
 // Cmder Start
 // ===========================================
 
-// Check napp is build
-if (!fs.existsSync(`${path.resolve(__dirname, 'napp-win32-ia32')}`)) {
+// Check natpp is build
+
+const _os = os.arch() === 'x64' ? 'x64' : 'ia32'
+
+if (!fs.existsSync(`${path.resolve(__dirname, `natpp-win32-${_os}`)}`)) {
 
   console.log(chalk.yellow('Build'), 'the native app (only first time)')
 
   const cmd = os.arch() === 'x64' ? 'npm run build:64' : 'npm run build:32'
+
   exec(cmd, {
     cwd: `${__dirname}`
   }, (err, stdout, stderr) => {
@@ -97,7 +101,7 @@ function createLnk() {
   console.log(chalk.blue('url -'), payload.url)
 
   // Set app name
-  if (payload.name === 'napp') {
+  if (payload.name === 'natpp') {
     payload.name = getHostName(payload.url)
   }
 
@@ -115,7 +119,7 @@ function createLnk() {
 
     // Create windows link
     ws.create(`%UserProfile%/DeskTop/${payload.name}.lnk`, {
-      target: `${__dirname}/napp-win32-ia32/napp.exe`,
+      target: `${__dirname}/natpp-win32-${_os}/natpp.exe`,
       args: `url=${payload.url} w=${payload.width} h=${payload.height}`,
       desc: payload.desc,
       icon: payload.icon,
