@@ -1,16 +1,17 @@
 {
-  "name": "napp",
+  "name": "natpp",
   "version": "0.0.1",
   "description": "Fast, simple, minimalist tool for create Web Apps to Desktop Apps.",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
     "test": "node main.js",
-    "build": "electron-packager . napp --platform=win32 --arch=ia32 --icon=./logo/napp.ico --squirrel-install --prune=true --electron-version=1.7.9 --overwrite --ignore=node_modules --ignore=.gitignore --ignore=.vscode --ignore=napp-win32-ia32"
+    "build:32": "electron-packager . natpp --platform=win32 --arch=ia32 --icon=./logo/natpp.ico --squirrel-install --prune=true --electron-version=1.7.9 --overwrite --ignore=node_modules --ignore=.gitignore --ignore=.vscode --ignore=natpp-win32-ia32",
+    "build:64": "electron-packager . natpp --platform=win32 --arch=x64 --icon=./logo/natpp.ico --squirrel-install --prune=true --electron-version=1.7.9 --overwrite --ignore=node_modules --ignore=.gitignore --ignore=.vscode --ignore=natpp-win32-ia32"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/explooosion/napp.git"
+    "url": "git+https://github.com/explooosion/natpp.git"
   },
   "keywords": [
     "web",
@@ -20,14 +21,14 @@
     "app"
   ],
   "bin": {
-    "napp": "./index.js"
+    "natpp": "./index.js"
   },
   "author": "Robby <ta7382@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/explooosion/napp/issues"
+    "url": "https://github.com/explooosion/natpp/issues"
   },
-  "homepage": "https://github.com/explooosion/napp#readme",
+  "homepage": "https://github.com/explooosion/natpp#readme",
   "devDependencies": {
     "commander": "^2.15.1",
     "electron": "^1.7.9",
@@ -42,6 +43,7 @@
     "webpack": "^3.9.1"
   },
   "dependencies": {
+    "arch": "^2.1.0",
     "copy": "^0.3.1",
     "node-process-windows": "0.0.2",
     "windows-shortcuts": "^0.1.6"
