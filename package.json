@@ -1,13 +1,12 @@
 {
   "name": "napp",
   "version": "0.0.1",
-  "description": "Make any web page a desktop application.",
+  "description": "Fast, simple, minimalist tool for create Web Apps to Desktop Apps.",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
     "test": "node main.js",
-    "build": "electron-packager . napp --platform=win32 --arch=ia32 --icon=./logo/napp.ico --squirrel-install --prune=true --electron-version=1.7.9 --overwrite --ignore=node_modules --ignore=.gitignore --ignore=.vscode --ignore=installer --ignore=napp-win32-ia32",
-    "grunt": "grunt"
+    "build": "electron-packager . napp --platform=win32 --arch=ia32 --icon=./logo/napp.ico --squirrel-install --prune=true --electron-version=1.7.9 --overwrite --ignore=node_modules --ignore=.gitignore --ignore=.vscode --ignore=napp-win32-ia32"
   },
   "repository": {
     "type": "git",
@@ -16,7 +15,9 @@
   "keywords": [
     "web",
     "view",
-    "native"
+    "native",
+    "electron",
+    "app"
   ],
   "bin": {
     "napp": "./index.js"
@@ -37,12 +38,12 @@
     "eslint-plugin-formatting": "0.0.4",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-mocha": "^4.11.0",
-    "grunt": "^1.0.1",
-    "grunt-electron-installer": "^2.1.0",
+    "favicon": "^0.0.2",
     "webpack": "^3.9.1"
   },
   "dependencies": {
     "copy": "^0.3.1",
-    "node-process-windows": "0.0.2"
+    "node-process-windows": "0.0.2",
+    "windows-shortcuts": "^0.1.6"
   }
 }
