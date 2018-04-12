@@ -12,7 +12,7 @@ npm install natpp -g
 
 - Create once use everywhere.
 - Just create link.
-- For Windows (I dont' have MacBook).
+- For Windows (I don't have MacBook).
 - Arch auto check.
 - Icon from web favicon (only support .ico).
 
