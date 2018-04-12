@@ -1,13 +1,13 @@
 {
   "name": "natpp",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Fast, simple, minimalist tool for create Web Apps to Desktop Apps.",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
     "test": "node main.js",
-    "build-32": "electron-packager . natpp --platform=win32 --arch=ia32 --icon=./logo/natpp.ico --squirrel-install --prune=true --electron-version=1.7.9 --overwrite --ignore=node_modules --ignore=.gitignore --ignore=.vscode --ignore=natpp-win32-ia32",
-    "build-64": "electron-packager . natpp --platform=win32 --arch=x64 --icon=./logo/natpp.ico --squirrel-install --prune=true --electron-version=1.7.9 --overwrite --ignore=node_modules --ignore=.gitignore --ignore=.vscode --ignore=natpp-win32-x64"
+    "build:32": "electron-packager . natpp --platform=win32 --arch=ia32 --icon=./logo/natpp.ico --squirrel-install --prune=true --electron-version=1.7.9 --overwrite --ignore=node_modules --ignore=.gitignore --ignore=.vscode --ignore=natpp-win32-ia32",
+    "build:64": "electron-packager . natpp --platform=win32 --arch=x64 --icon=./logo/natpp.ico --squirrel-install --prune=true --electron-version=1.7.9 --overwrite --ignore=node_modules --ignore=.gitignore --ignore=.vscode --ignore=natpp-win32-x64"
   },
   "repository": {
     "type": "git",

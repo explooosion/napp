@@ -69,7 +69,7 @@ if (!fs.existsSync(`${path.resolve(__dirname, 'napp-win32-ia32')}`)) {
 
   console.log(chalk.yellow('Build'), 'the native app (only first time)')
 
-  const cmd = os.arch() === 'x64' ? 'npm run build-64' : 'npm run build-32'
+  const cmd = os.arch() === 'x64' ? 'npm run build:64' : 'npm run build:32'
   exec(cmd, {
     cwd: `${__dirname}`
   }, (err, stdout, stderr) => {
