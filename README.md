@@ -1,4 +1,4 @@
-# natpp
+# Natpp
 Fast, simple, minimalist tool for create Web Apps to Desktop Apps.
 
 ## Installation
@@ -9,25 +9,26 @@ npm install natpp -g
 ## Features
 
 - Create once use everywhere.
-- Only create link.
-- For Windows.
-- Icon is favicon (support ico).
+- Just create link.
+- For Windows (I dont' have MacBook).
+- Arch auto check.
+- Icon from web favicon (only support .ico).
 
 ## Usage
 
 Create native app.
 ```bash
-napp http://www.example.com/
+natpp http://www.example.com/
 ```
 
 Custom app name.
 ```bash
-napp http://www.example.com/ -n myapp
+natpp http://www.example.com/ -n myapp
 ```
 
 Custom app window size.
 ```bash
-napp http://www.example.com/ -w 400 -h 600
+natpp http://www.example.com/ -w 400 -h 600
 ```
 
 ## Options 
@@ -36,15 +37,15 @@ napp http://www.example.com/ -w 400 -h 600
 -  `-h`, `--height`  [value],  Set app height (default: 600)
 -  `-d`, `--desc`    [value],  Set app description
 
-## Get Help
+## Help
 
 ```bash
-napp
+natpp
 ```
 
 or 
 
 ```bash
-napp -h
+natpp -h
 ```
 
