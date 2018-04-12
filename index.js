@@ -2,16 +2,24 @@
 
 'use strict'
 
+const {
+  exec
+} = require('child_process')
 const program = require('commander')
 const chalk = require('chalk')
+const ws = require('windows-shortcuts')
 const fs = require('fs')
+const path = require('path')
+const favicon = require('favicon')
 const pkg = require('./package.json')
 
 let payload = {
   url: 'https://github.com/',
   name: 'napp',
-  width: 400,
-  height: 400,
+  width: 800,
+  height: 600,
+  desc: 'a native web app',
+  icon: null,
 }
 
 program
@@ -21,42 +29,99 @@ program
   .option('-n, --name [value]', 'Set app name', setName)
   .option('-w, --width [value]', 'Set app width', setWidth)
   .option('-h, --height [value]', 'Set app height', setHeight)
+  .option('-d, --desc [value]', 'Set app description', setDesc)
   .parse(process.argv)
 
 if (program.args.length === 0) {
   program.outputHelp(
     () => {
       return chalk.white(`
-
       Napp ${pkg.version}
 
       Usage
         $ napp <url>
+        $ napp -v
 
       Options
-        --name, -n  Set app name
-        --width, -w  Set app width
-        --height, -h  Set app height
+        -n, --name    [value],  Set app name (default: web hostname)
+        -w, --width   [value],  Set app width (default: 800)
+        -h, --height  [value],  Set app height (default: 600)
+        -d, --desc    [value],  Set app description
 
       Examples
+        $ napp https://example.com/ 
         $ napp https://example.com/ -n myapp 
-        Create myapp from https://example.com/ ...
+        $ napp https://example.com/ -n myapp -w 100 
+        $ napp https://example.com/ -h 200 
+        $ napp https://example.com/ -d "this is my app"  
     `)
     })
   return
 }
 
-/** Check url */
-if (!program.args[0].includes('http')) {
-  console.log(chalk.red('error:'), `unknow url ${program.args[0]}`)
-  return
+// ===========================================
+// Cmder Start
+// ===========================================
+
+// Check napp is build
+if (!fs.existsSync(`${path.resolve(__dirname,'napp-win32-ia32')}`)) {
+  console.log(chalk.yellow('Build'), 'the native app (only first time)')
+  exec('npm run build', (err, stdout, stderr) => {
+    createLnk()
+  })
+} else {
+  createLnk()
 }
 
-setUrl(program.args[0])
-console.log(chalk.yellow('Payload'), payload)
+function createLnk() {
 
-// create link
-// mklink test "F:\Electron\napp\napp-win32-ia32\napp.exe"
+  // Check url
+  if (!program.args[0].includes('http')) {
+    console.log(chalk.red('error:'), `unknow url ${program.args[0]}`)
+    return
+  }
+
+  // Parse args
+  setUrl(program.args[0])
+
+  console.log(chalk.yellow('Create link ...'))
+
+  console.log('-')
+  console.log(chalk.blue('url -'), payload.url)
+
+  // Set app name
+  if (payload.name === 'napp') {
+    payload.name = getHostName(payload.url)
+  }
+
+  console.log(chalk.blue('name -'), payload.name)
+  console.log(chalk.blue('width -'), payload.width)
+  console.log(chalk.blue('height -'), payload.height)
+  console.log(chalk.blue('description -'), payload.desc)
+
+  // Get favicon
+  favicon(payload.url, (err, icon) => {
+    if (err) throw Error(err)
+    payload.icon = icon.includes('.ico') ? payload.icon : ''
+    console.log(chalk.blue('icon -'), payload.icon === '' ? 'use default' : payload.icon)
+    console.log('-')
+
+    // Create windows link
+    ws.create(`%UserProfile%/DeskTop/${payload.name}.lnk`, {
+      target: `${__dirname}/napp-win32-ia32/napp.exe`,
+      args: `url=${payload.url} w=${payload.width} h=${payload.height}`,
+      desc: payload.desc,
+      icon: payload.icon,
+    }, (err) => {
+      if (err) throw Error(err)
+      console.log(chalk.green(`Success ✔️`))
+    })
+  })
+}
+
+// ===========================================
+// Functions
+// ===========================================
 
 /**
  * Set app url
@@ -88,4 +153,31 @@ function setWidth(val) {
  */
 function setHeight(val) {
   payload.height = Number(val)
+}
+
+/**
+ * Set app description
+ * @param {string} val desc
+ */
+function setDesc(val) {
+  payload.desc = val
+}
+
+/**
+ * Get web hostname
+ * @param {string} url web url
+ * @return {string}
+ */
+function getHostName(url) {
+  const match = url.match(/:\/\/(www[0-9]?\.)?(.[^/:]+)/i);
+  if (
+    match != null &&
+    match.length > 2 &&
+    typeof match[2] === 'string' &&
+    match[2].length > 0
+  ) {
+    return match[2];
+  } else {
+    return null;
+  }
 }
