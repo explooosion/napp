@@ -1,6 +1,6 @@
 {
   "name": "natpp",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Fast, simple, minimalist tool for create Web Apps to Desktop Apps.",
   "main": "main.js",
   "scripts": {
@@ -39,6 +39,7 @@
   },
   "dependencies": {
     "arch": "^2.1.0",
+    "chalk": "^2.3.2",
     "commander": "^2.15.1",
     "copy": "^0.3.1",
     "electron": "^1.7.9",
