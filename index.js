@@ -8,11 +8,11 @@ const {
 const program = require('commander')
 const chalk = require('chalk')
 const ws = require('windows-shortcuts')
-const fs = require('fs')
-const path = require('path')
-const arch = require('arch')
 const favicon = require('favicon')
 const pkg = require('./package.json')
+const fs = require('fs')
+const path = require('path')
+const os = require('os')
 
 let payload = {
   url: 'https://github.com/',
@@ -66,10 +66,10 @@ if (program.args.length === 0) {
 
 // Check napp is build
 if (!fs.existsSync(`${path.resolve(__dirname, 'napp-win32-ia32')}`)) {
-  console.log(__dirname)
+
   console.log(chalk.yellow('Build'), 'the native app (only first time)')
 
-  const cmd = arch() === 'x64' ? 'npm run build:64' : 'npm run build:32'
+  const cmd = os.arch() === 'x64' ? 'npm run build-64' : 'npm run build-32'
   exec(cmd, {
     cwd: `${__dirname}`
   }, (err, stdout, stderr) => {
