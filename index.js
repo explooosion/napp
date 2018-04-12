@@ -20,7 +20,7 @@ let payload = {
   width: 800,
   height: 600,
   desc: 'a native web app',
-  icon: null,
+  icon: '',
 }
 
 program
@@ -113,7 +113,7 @@ function createLnk() {
   // Get favicon
   favicon(payload.url, (err, icon) => {
     if (err) throw Error(err)
-    payload.icon = icon.includes('.ico') ? payload.icon : ''
+    payload.icon = icon.includes('.ico') ? icon : ''
     console.log(chalk.blue('icon -'), payload.icon === '' ? 'use default' : payload.icon)
     console.log('-')
 

@@ -1,6 +1,6 @@
 {
   "name": "natpp",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Fast, simple, minimalist tool for create Web Apps to Desktop Apps.",
   "main": "main.js",
   "scripts": {
