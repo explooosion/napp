@@ -65,8 +65,12 @@ if (program.args.length === 0) {
 
 // Check napp is build
 if (!fs.existsSync(`${path.resolve(__dirname,'napp-win32-ia32')}`)) {
+  console.log(__dirname)
   console.log(chalk.yellow('Build'), 'the native app (only first time)')
-  exec('npm run build', (err, stdout, stderr) => {
+  exec('npm run build', {
+    cwd: `${__dirname}`
+  }, (err, stdout, stderr) => {
+    if (err) throw Error(err)
     createLnk()
   })
 } else {
