@@ -1,10 +1,10 @@
 # Folder
 /node_modules
-/app-win32-ia32
 /installer
 
 # File
 yarn-error.log
 
 # core
-napp-win32-ia32
+/natpp-win32-ia32
+/natpp-win32-x64
